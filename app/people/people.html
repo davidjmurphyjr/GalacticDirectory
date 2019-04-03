@@ -1,0 +1,11 @@
+<div ng-controller="PeopleCtrl">
+    <p>This is the partial for view 1.</p>
+    {{page.count}}
+    {{pageNumber}}
+    <div>
+        <div ng-repeat="result in page.results">
+            {{result.name}}
+        </div>
+    </div>
+</div>
+
