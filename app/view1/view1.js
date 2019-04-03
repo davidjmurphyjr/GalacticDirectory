@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.view1', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {
@@ -9,6 +9,10 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', 'peoplePageService', function($scope, peoplePageService) {
+  $scope.page = peoplePageService.get(1);
+}])
 
+.factory('peoplePageService', ['$resource', function($resource) {
+  return $resource('https://swapi.co/api/people/?page=:pageNumber');
 }]);
