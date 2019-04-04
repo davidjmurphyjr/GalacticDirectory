@@ -10,6 +10,10 @@
 </head>
 <body>
 
+  <div ng-controller="LoadingCtrl">
+    <span ng-show="isRouteLoading">loading...</span>
+  </div>
+
   <div ng-view></div>
 
   <script src="lib/angular/angular.js"></script>
