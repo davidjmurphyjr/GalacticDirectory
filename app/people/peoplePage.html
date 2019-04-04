@@ -1,15 +1,14 @@
-<div ng-controller="PeoplePageCtrl as ctrl">
-    <div ng-show="!ctrl.peoplePage">Loading...</div>
-    <div ng-show="ctrl.peoplePage" class="people-page" >
+<div>
+    <div class="people-page" >
         <h1>Galactic Directory</h1>
         <h2>People</h2>
-        <div class="people-count">People ({{ctrl.peoplePage.count}})</div>
+        <div class="people-count">People ({{peoplePage.count}})</div>
         <div class="people-list">
-            <person-master person="person" ng-repeat="person in ctrl.peoplePage.results" />
+            <person-master person="person" ng-repeat="person in peoplePage.results" />
         </div>
         <div>
-            <a ng-href="{{ctrl.next}}">Next</a>
-            <a ng-href="{{ctrl.previous}}">Previous</a>
+            <a ng-href="{{next}}">Next</a>
+            <a ng-href="{{previous}}">Previous</a>
         </div>
     </div>
 </div>

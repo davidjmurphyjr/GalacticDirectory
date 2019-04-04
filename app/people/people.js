@@ -2,41 +2,33 @@
 
 angular.module('galacticDirectory.people', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/people/:pageNumber', {
-    templateUrl: 'people/peoplePage.html',
-    controller: 'PeoplePageCtrl'
-  });
-}])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/people/:pageNumber', {
+            templateUrl: 'people/peoplePage.html',
+            controller: 'PeoplePageCtrl',
+            resolve: {
+                peoplePage: ['$route', '$http', function ($route, $http) {
+                    return $http.get('https://swapi.co/api/people/?page=' + $route.current.params.pageNumber);
+                }]
+            }
+        });
+    }])
 
-.controller('PeoplePageCtrl', ['$routeParams', 'peoplePageService', function($routeParams, peoplePageService) {
-  this.mapPageUrl = function (url) {
-    url.replace("https://swapi.co/api/people/?page=", "#!/people/");
-  };
+    .controller('PeoplePageCtrl', ['$scope', 'peoplePage', function ($scope, peoplePage) {
+        var mapPageUrl = function (url) {
+            return url.replace("https://swapi.co/api/people/?page=", "#!/people/");
+        };
+        $scope.peoplePage = peoplePage.data;
+        $scope.next = $scope.peoplePage.next && mapPageUrl($scope.peoplePage.next);
+        $scope.previous = $scope.peoplePage.previous && mapPageUrl($scope.peoplePage.previous);
+    }])
 
-  peoplePageService.get($routeParams.pageNumber).then((function(response) {
-    this.peoplePage = response.data;
-  }).bind(this));
-}])
+    .component('personMaster', {
+        templateUrl: 'people/personMaster.html',
+        bindings: {person: '<'}
+    })
 
-.factory('peoplePageService', ['$http', function($http) {
-  return {
-    get: function (pageNumber) {
-      return $http.get('https://swapi.co/api/people/?page=' + pageNumber);
-    }
-  };
-}])
-
-.component('personMaster', {
-  templateUrl: 'people/personMaster.html',
-  bindings: {
-    person: '<'
-  }
-})
-
-.component('personDetails', {
-  templateUrl: 'people/personDetails.html',
-  bindings: {
-    person: '<'
-  }
-});
+    .component('personDetails', {
+        templateUrl: 'people/personDetails.html',
+        bindings: {person: '<'}
+    });
