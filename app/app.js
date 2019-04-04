@@ -4,8 +4,6 @@
 angular.module('galacticDirectory', [
   'ngRoute',
   'galacticDirectory.people',
-  'myApp.view2',
-  'myApp.version',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

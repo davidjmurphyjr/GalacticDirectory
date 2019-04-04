@@ -1,0 +1,4 @@
+<div class="person-master" ng-click="$ctrl.show = !$ctrl.show">
+    <span>{{$ctrl.person.name}}</span>
+</div>
+<person-details ng-show="$ctrl.show" person="$ctrl.person"/>
