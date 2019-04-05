@@ -10,8 +10,11 @@
 </head>
 <body>
 
-  <div ng-controller="LoadingCtrl">
-    <span ng-show="isRouteLoading">loading...</span>
+  <div class="header">
+    <h1>Galactic Directory</h1>
+    <div class="loading-indicator" ng-controller="LoadingCtrl" ng-show="isRouteLoading">
+      Loading...
+    </div>
   </div>
 
   <div ng-view></div>

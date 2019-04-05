@@ -14,13 +14,15 @@ angular.module('galacticDirectory.people', ['ngRoute'])
         });
     }])
 
-    .controller('PeoplePageCtrl', ['$scope', 'peoplePage', function ($scope, peoplePage) {
+    .controller('PeoplePageCtrl', ['$scope', '$routeParams', 'peoplePage', function ($scope, $routeParams, peoplePage) {
         var mapPageUrl = function (url) {
             return url.replace("https://swapi.co/api/people/?page=", "#!/people/");
         };
         $scope.peoplePage = peoplePage.data;
         $scope.next = $scope.peoplePage.next && mapPageUrl($scope.peoplePage.next);
         $scope.previous = $scope.peoplePage.previous && mapPageUrl($scope.peoplePage.previous);
+        $scope.pageNumber = $routeParams.pageNumber;
+        $scope.numberOfPages = Math.ceil($scope.peoplePage.count / 10);
     }])
 
     .component('personMaster', {

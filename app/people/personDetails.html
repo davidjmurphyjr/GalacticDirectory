@@ -1,8 +1,14 @@
 <div class="person-details">
-    <span>Birth Year: {{$ctrl.person.birth_year}}</span>
-    <span>Gender: {{$ctrl.person.gender}}</span>
-    <span>Skin Color: {{$ctrl.person.skin_color}}</span>
-    <span>Hair Color: {{$ctrl.person.hair_color}}</span>
-    <span>Mass: {{$ctrl.person.mass}}</span>
-    <span>Height: {{$ctrl.person.height}}</span>
+    <div class="attributes-grid">
+        <span class="label">Gender:</span>
+        <span class="value"> {{$ctrl.person.gender}}</span>
+        <span class="label">Skin Color:</span>
+        <span class="value"> {{$ctrl.person.skin_color}}</span>
+        <span class="label">Hair Color:</span>
+        <span class="value"> {{$ctrl.person.hair_color}}</span>
+        <span class="label">Mass:</span>
+        <span class="value"> {{$ctrl.person.mass}}</span>
+        <span class="label">Height:</span>
+        <span class="value"> {{$ctrl.person.height}}</span>
+    </div>
 </div>

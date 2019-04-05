@@ -1,13 +1,15 @@
 <div>
     <div class="people-page" >
-        <h1>Galactic Directory</h1>
-        <h2>People</h2>
-        <div class="people-count">People ({{peoplePage.count}})</div>
+        <h2>People ({{peoplePage.count}})</h2>
+        <div class="people-list-header">
+            <div class="people-count">Page: {{pageNumber}} of {{numberOfPages}}</div>
+            <div class="nav-links">
+                <a ng-href="{{previous}}">Previous</a>
+                <a ng-href="{{next}}">Next</a>
+            </div>
+        </div>
         <div class="people-list">
             <person-master person="person" ng-repeat="person in peoplePage.results" />
-        </div>
-        <div>
-             <a ng-href="{{previous}}">Previous</a> <a ng-href="{{next}}">Next</a>
         </div>
     </div>
 </div>

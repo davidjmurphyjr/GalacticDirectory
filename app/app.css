@@ -1,25 +1,57 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+body {
+  max-width: 990px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ebeff2;
 }
 
-.menu:before {
-  content: "[";
+.header {
+  display: flex;
 }
 
-.menu:after {
-  content: "]";
+.header .loading-indicator {
+  margin-left: auto;
 }
 
-.menu > li {
-  display: inline;
+.people-page .people-list-header {
+  display: flex;
+  margin: 20px 0;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.people-page .people-list-header .nav-links {
+  margin-left: auto;
+}
+
+.people-page .people-list-header .nav-links a:visited {
+  color: blue;
+}
+
+.people-page .people-list {
+  margin: 20px 0;
+}
+
+.people-page .people-list .person-master {
+  background-color: white;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.people-page .people-list .person-master:hover {
+  background-color: #E8F4FD;
+}
+
+.people-page .people-list .person-details {
+  background-color: #f2f2f3;
+  padding: 5px;
+  display: flex;
+}
+
+.people-page .people-list .person-details .attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.people-page .people-list .person-details .attributes-grid .label {
+  margin-right: 10px;
+  font-weight: bold;
 }
